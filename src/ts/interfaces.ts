@@ -1,4 +1,4 @@
-import { Color } from './enums'
+import { Color, FilterPanelSortBy } from './enums'
 
 export interface TextItem {
     color: string
@@ -6,6 +6,8 @@ export interface TextItem {
 }
 
 export interface InitialState {
+    filterColors: Set<string>
+    filterPanelSortBy: FilterPanelSortBy
     highlightColor: Color
     textItems: TextItem[]
 }

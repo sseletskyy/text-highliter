@@ -2,7 +2,7 @@ import { css } from '@emotion/core'
 
 export const backgroundColors = css`
     .red {
-        background-color: red;
+        background-color: tomato;
     }
 
     .yellow {
@@ -12,4 +12,11 @@ export const backgroundColors = css`
     .green {
         background-color: lightgreen;
     }
+`
+
+export const textArea = css`
+    color: black;
+    border: 1px solid gray;
+    padding: 10px;
+    min-height: 150px;
 `

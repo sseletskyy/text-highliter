@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { SelectionRange, TextItem } from '../../ts/interfaces'
-import { backgroundColors } from '../common-styles'
+import { backgroundColors, textArea } from '../common-styles'
 
 interface TextAreaProps {
     textItems: TextItem[]
@@ -10,10 +10,7 @@ interface TextAreaProps {
 
 const StyledTextArea = styled.div`
     .highlight-text-area {
-        color: black;
-        border: 1px solid gray;
-        padding: 10px;
-        min-height: 150px;
+        ${textArea}
     }
     ${backgroundColors}
 `

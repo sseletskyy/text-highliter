@@ -4,11 +4,13 @@ import { Provider } from 'react-redux'
 import { mount } from 'enzyme'
 import { InitialState } from '../../ts/interfaces'
 import { TextAreaContainer } from './text-area-container'
-import { Color } from '../../ts/enums'
+import { Color, FilterPanelSortBy } from '../../ts/enums'
 
 describe('TextAreaContainer', () => {
     const initialState: InitialState = {
         highlightColor: Color.EMPTY,
+        filterColors: new Set(),
+        filterPanelSortBy: FilterPanelSortBy.BY_APPEARANCE,
         textItems: [{ color: Color.RED, text: 'Red' }]
     }
     const mockStore = configureStore()

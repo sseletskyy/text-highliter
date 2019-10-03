@@ -1,4 +1,5 @@
-= Inside that directory, you can run several commands =
+# Text Highlighter
+### Inside that directory, you can run several commands
 
 Starts the development server:
 `npm start`

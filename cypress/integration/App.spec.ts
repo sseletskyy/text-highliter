@@ -1,7 +1,9 @@
 // @ts-ignore
 const getHighlightSection = () => cy.get('.highlight-section')
-// @ts-ignore
 const getHighlightTextArea = () => cy.get('.highlight-section .highlight-text-area')
+const RGB_RED = 'rgb(255, 99, 71)'
+const RGB_YELLOW = 'rgb(255, 255, 0)'
+const RGB_GREEN = 'rgb(144, 238, 144)'
 
 describe('App', () => {
     beforeEach(() => {
@@ -21,21 +23,21 @@ describe('App', () => {
                 .find('.color-picker')
                 .eq(0)
                 .should('have.css', 'background-color')
-                .and('eq', 'rgb(255, 0, 0)')
+                .and('eq', RGB_RED)
         })
         it('second color picker should be yellow', () => {
             getHighlightSection()
                 .find('.color-picker')
                 .eq(1)
                 .should('have.css', 'background-color')
-                .and('eq', 'rgb(255, 255, 0)')
+                .and('eq', RGB_YELLOW)
         })
         it('third color picker should be green', () => {
             getHighlightSection()
                 .find('.color-picker')
                 .eq(2)
                 .should('have.css', 'background-color')
-                .and('eq', 'rgb(144, 238, 144)')
+                .and('eq', RGB_GREEN)
         })
         it('first color picker should be selected by default (css box-shadow)', () => {
             getHighlightSection()
@@ -60,21 +62,21 @@ describe('App', () => {
                     .find('span.yellow')
                     .contains('Lorem Ipsum')
                     .should('have.css', 'background-color')
-                    .and('eq', 'rgb(255, 255, 0)')
+                    .and('eq', RGB_YELLOW)
             })
             it('should have a red span', () => {
                 getHighlightTextArea()
                     .find('span.red')
                     .contains('Ipsum')
                     .should('have.css', 'background-color')
-                    .and('eq', 'rgb(255, 0, 0)')
+                    .and('eq', RGB_RED)
             })
             it('should have a green span', () => {
                 getHighlightTextArea()
                     .find('span.green')
                     .contains('standard')
                     .should('have.css', 'background-color')
-                    .and('eq', 'rgb(144, 238, 144)')
+                    .and('eq', RGB_GREEN)
             })
         })
         describe('when the text is highlighted', () => {
@@ -108,7 +110,7 @@ describe('App', () => {
                     .find('span')
                     .eq(0)
                     .should('have.css', 'background-color')
-                    .and('eq', 'rgb(255, 0, 0)')
+                    .and('eq', RGB_RED)
             })
         })
     })

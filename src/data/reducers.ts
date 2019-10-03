@@ -1,8 +1,10 @@
 import { createSlice, PayloadAction } from 'redux-starter-kit'
 import { InitialState, TextItem } from '../ts/interfaces'
-import { Color } from '../ts/enums'
+import { Color, FilterPanelSortBy } from '../ts/enums'
 
 export const initialState: InitialState = {
+    filterColors: new Set(),
+    filterPanelSortBy: FilterPanelSortBy.BY_APPEARANCE,
     highlightColor: Color.RED,
     textItems: [
         {
@@ -45,9 +47,23 @@ export const updateTextItems = (state: InitialState, action: PayloadAction<TextI
 export const updateHighlightColor = (state: InitialState, action: PayloadAction<Color>) => {
     state.highlightColor = state.highlightColor === action.payload ? Color.EMPTY : action.payload
 }
+
+const updateFilterColor = (state: InitialState, action: PayloadAction<Color>) => {
+    state.filterColors.has(action.payload)
+        ? state.filterColors.delete(action.payload)
+        : state.filterColors.add(action.payload)
+    state.filterColors = new Set(state.filterColors)
+}
+
+export const updateFilterPanelSortBy = (state: InitialState, action: PayloadAction<FilterPanelSortBy>) => {
+    state.filterPanelSortBy = action.payload
+}
+
 const slice = createSlice({
     initialState,
     reducers: {
+        updateFilterColor,
+        updateFilterPanelSortBy,
         updateHighlightColor,
         updateTextItems
     }

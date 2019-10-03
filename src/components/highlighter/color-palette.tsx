@@ -4,7 +4,7 @@ import { ColorPicker } from './color-picker'
 import { Color } from '../../ts/enums'
 
 export interface ColorPaletteProps {
-    selectedColors: Color[]
+    selectedColors: Color[] | string[]
     updateColor: (color: Color) => () => void
 }
 
