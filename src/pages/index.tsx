@@ -1,8 +1,9 @@
-import React from "react"
+import React from 'react'
+import { Highlighter } from '../components/highlighter'
 
 const Home = () => (
     <div>
-        <h1>Test</h1>
+        <Highlighter />
     </div>
 )
 
