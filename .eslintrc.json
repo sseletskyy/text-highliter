@@ -1,0 +1,86 @@
+// https://dev.to/robertcoopercode/using-eslint-and-prettier-in-a-typescript-project-53jb
+{
+  "parser": "@typescript-eslint/parser", // Specifies the ESLint parser
+  "extends": [
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended", // Uses the recommended rules from the @typescript-eslint/eslint-plugin
+    "prettier/@typescript-eslint",
+    "plugin:prettier/recommended",
+    "plugin:import/warnings"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2018, // Allows for the parsing of modern ECMAScript features
+    "sourceType": "module", // Allows for the use of imports
+    "ecmaFeatures": {
+      "jsx": true // Allows for the parsing of JSX
+    }
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "react" // 'jsx-a11y',
+  ],
+  "rules": {
+    "no-console": ["warn", { "allow": ["warn", "error"] }],
+    "ordered-imports": 0,
+    "object-literal-sort-keys": 0,
+    "jsx-no-lambda": 0,
+    "no-empty": 2,
+    "no-empty-interface": 0,
+    "react/jsx-uses-react": 2,
+    "react/display-name": 0,
+    "react/prop-types": 0,
+    "jsx-a11y/anchor-is-valid": 0,
+    "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+    // @typescript
+    "@typescript-eslint/indent": 0,
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      { "argsIgnorePattern": "^_" }
+    ],
+    "@typescript-eslint/explicit-function-return-type": 0,
+    "@typescript-eslint/no-explicit-any": 0, // TODO need to be discussed
+    "@typescript-eslint/no-empty-interface": 0, // TODO need to be discussed
+    "@typescript-eslint/camelcase": 0,
+    "@typescript-eslint/member-ordering": [
+      "warn",
+      {
+        "interfaces": [],
+        "typeLiterals": [],
+        "classExpressions": [
+          // Fields
+          "static-field", // = ['public-static-field', 'protected-static-field', 'private-static-field'])
+          "instance-field", // = ['public-instance-field', 'protected-instance-field', 'private-instance-field'])
+
+          // Constructors
+          "constructor", // = ['public-constructor', 'protected-constructor', 'private-constructor'])
+
+          // Methods
+          "static-method", // = ['public-static-method', 'protected-static-method', 'private-static-method'])
+          "instance-method" // = ['public-instance-method', 'protected-instance-method', 'private-instance-method']
+        ]
+      }
+    ],
+    "@typescript-eslint/explicit-member-accessibility": [
+      "error",
+      {
+        "accessibility": "explicit",
+        "overrides": {
+          "accessors": "explicit",
+          "constructors": "off",
+          "methods": "explicit",
+          "parameterProperties": "explicit"
+        }
+      }
+    ],
+    "@typescript-eslint/ban-ts-ignore": 0,
+    "@typescript-eslint/no-inferrable-types": 0,
+    "import/no-webpack-loader-syntax": 0,
+    "import/no-unresolved": 0
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+}

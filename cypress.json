@@ -1,0 +1,10 @@
+{
+  "baseUrl": "http://localhost:3000",
+  "video": false,
+  "userAgent": "Mozilla/5.0 (Linux; Android 5.0; SM-G900P Build/LRX21T) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Mobile Safari/537.36",
+  "viewportWidth": 1300,
+  "defaultCommandTimeout": 5000,
+  "requestTimeout": 5000,
+  "chromeWebSecurity": false,
+  "watchForFileChanges": true
+}

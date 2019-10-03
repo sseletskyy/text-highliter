@@ -1,0 +1,136 @@
+{
+  "name": "highlight",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "e2e:ci": "start-test start:ci 3000 cypress:ci",
+    "cypress:ci": "npx cypress run --reporter json",
+    "cypress": "npx cypress open",
+    "build": "REACT_APP_ENV=production react-scripts build",
+    "start": "react-scripts start",
+    "start:ci": "BROWSER=none react-scripts start",
+    "test": "jest",
+    "lint": "eslint 'src/**/*.{ts,tsx,js,jsx}' 'cypress/**/*.{ts,tsx,js,jsx}'",
+    "flint": "npm run lint -- --fix",
+    "prettify": "npx prettier --check --write \"src/**/*.tsx\" \"src/**/*.ts\" \"cypress/**/*.ts\"",
+    "prettylint": "npm run prettify && npm run flint",
+    "typecheck": "tsc --project tsconfig.json --noEmit && tsc --project ./cypress/tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@emotion/core": "^10.0.20",
+    "@emotion/styled": "^10.0.17",
+    "react": "16.10.1",
+    "react-dom": "16.10.1",
+    "react-redux": "^7.1.1",
+    "react-scripts": "^3.2.0",
+    "redux": "^4.0.4",
+    "redux-starter-kit": "^0.7.0",
+    "webpack": "^4.41.0",
+    "webpack-env": "^0.8.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.2",
+    "@babel/node": "^7.6.2",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-transform-runtime": "^7.6.2",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.6.0",
+    "@babel/runtime": "^7.6.2",
+    "@cypress/webpack-preprocessor": "^4.1.0",
+    "@testing-library/react": "^9.2.0",
+    "@types/jest": "^24.0.18",
+    "@types/node": "^12.7.9",
+    "@types/react": "^16.9.4",
+    "@types/react-dom": "^16.9.1",
+    "@types/react-redux": "^7.1.4",
+    "@types/webpack-env": "^1.14.0",
+    "@typescript-eslint/eslint-plugin": "^2.3.2",
+    "@typescript-eslint/parser": "^2.3.2",
+    "@zeit/next-typescript": "^1.1.1",
+    "awesome-typescript-loader": "^5.2.1",
+    "cypress": "^3.4.1",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
+    "eslint": "^6.5.1",
+    "eslint-config-prettier": "^6.3.0",
+    "eslint-plugin-cypress": "^2.7.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-react": "^7.15.1",
+    "husky": "^3.0.8",
+    "jest": "^24.9.0",
+    "lint-staged": "^9.4.1",
+    "precise-commits": "^1.0.2",
+    "prettier": "^1.18.2",
+    "start-server-and-test": "^1.10.3",
+    "ts-jest": "^24.1.0",
+    "ts-loader": "^6.2.0",
+    "typescript": "^3.6.3",
+    "webpack-cli": "^3.3.9"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "testURL": "https://localhost:3000/",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testMatch": [
+      "**/*.test.(ts|tsx)"
+    ],
+    "globals": {
+      "ts-jest": {
+        "babelConfig": false,
+        "diagnostics": false,
+        "tsConfig": "jest.tsconfig.json"
+      }
+    },
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "enzyme.js",
+      "cypress/",
+      "dist"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/enzyme.js"
+    ],
+    "coverageReporters": [
+      "json",
+      "lcov",
+      "text",
+      "text-summary"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/mocks.js",
+      "\\.(css|less)$": "<rootDir>/__mocks__/mocks.js"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "precise-commits && npm run typecheck && lint-staged",
+      "pre-push": "npm run lint && npm test && npm run test:e2e"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "npx prettier --config .prettierrc --write",
+      "git add"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
