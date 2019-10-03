@@ -1,36 +1,53 @@
+// @ts-ignore
+const getHighlightSection = () => cy.get('.highlight-section')
+
 describe('App', () => {
     beforeEach(() => {
         cy.visit('http://localhost:3000')
     })
     it('should have Highlight Section', () => {
-        cy.get('.highlight-section').should('exist')
+        getHighlightSection().should('exist')
     })
     describe('Highlight Section', () => {
         it('should have three color pickers', () => {
-            cy.get('.highlight-section')
+            getHighlightSection()
                 .find('.color-picker')
                 .should('have.lengthOf', 3)
         })
         it('first color picker should be red', () => {
-            cy.get('.highlight-section')
+            getHighlightSection()
                 .find('.color-picker')
-                .first()
+                .eq(0)
                 .should('have.css', 'background-color')
                 .and('eq', 'rgb(255, 0, 0)')
         })
         it('second color picker should be yellow', () => {
-            cy.get('.highlight-section')
+            getHighlightSection()
                 .find('.color-picker')
                 .eq(1)
                 .should('have.css', 'background-color')
                 .and('eq', 'rgb(255, 255, 0)')
         })
         it('third color picker should be green', () => {
-            cy.get('.highlight-section')
+            getHighlightSection()
                 .find('.color-picker')
                 .eq(2)
                 .should('have.css', 'background-color')
                 .and('eq', 'rgb(144, 238, 144)')
+        })
+        it('first color picker should be selected by default (css box-shadow)', () => {
+            getHighlightSection()
+                .find('.color-picker')
+                .eq(0)
+                .should('have.css', 'box-shadow')
+                .and('eq', 'rgb(128, 128, 128) 4px 4px 4px 0px')
+        })
+        it('second color picker should NOT be selected by default (css box-shadow)', () => {
+            getHighlightSection()
+                .find('.color-picker')
+                .eq(1)
+                .should('have.css', 'box-shadow')
+                .and('eq', 'none')
         })
     })
 })

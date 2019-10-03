@@ -1,16 +1,17 @@
 {
+  "extends": "../tsconfig.json",
   "compilerOptions": {
     "strict": true,
     "baseUrl": "../node_modules",
     "target": "es5",
     "lib": ["dom", "esnext"],
-    "types": ["cypress"],
+    "types": ["cypress", "node"],
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
-    "skipLibCheck": true,
+    "skipLibCheck": true
   },
   "include": ["**/*.ts"]
 }

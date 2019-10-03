@@ -10,6 +10,9 @@ const StyledColorPalette = styled.div`
 
 export const ColorPalette = () => {
     const palette = ['red', 'yellow', 'green']
-    const renderColorPicker = (color, index) => <ColorPicker color={color} key={index} />
+    const handleClick = _ => () => {}
+    const renderColorPicker = (color, index) => (
+        <ColorPicker color={color} key={index} onClick={handleClick(color)} selected={color === 'red'} />
+    )
     return <StyledColorPalette>{palette.map(renderColorPicker)}</StyledColorPalette>
 }
