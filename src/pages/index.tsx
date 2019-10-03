@@ -1,10 +1,12 @@
 import React from 'react'
+import { Provider } from 'react-redux'
 import { Highlighter } from '../components/highlighter'
+import store from '../data/store'
 
 const Home = () => (
-    <div>
+    <Provider store={store}>
         <Highlighter />
-    </div>
+    </Provider>
 )
 
 export default Home
