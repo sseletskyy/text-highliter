@@ -4,3 +4,8 @@ export enum Color {
     YELLOW = 'yellow',
     EMPTY = ''
 }
+
+export enum HighlightTextAreaMode {
+    READ = 'READ',
+    EDIT = 'EDIT'
+}
