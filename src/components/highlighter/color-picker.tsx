@@ -2,8 +2,9 @@ import React from 'react'
 import styled from '@emotion/styled'
 import { cx } from 'emotion'
 import { backgroundColors } from '../common-styles'
+import { Color } from '../../ts/enums'
 interface ColorPickerProps {
-    color: string
+    color: Color
     onClick: () => void
     selected?: boolean
     key?: string

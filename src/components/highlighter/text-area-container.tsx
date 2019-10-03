@@ -1,8 +1,10 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { useSelector } from 'react-redux'
-import { InitialState } from '../../ts/interfaces'
+import { useSelector, useDispatch } from 'react-redux'
+import { InitialState, SelectionRange } from '../../ts/interfaces'
 import { TextArea } from './text-area'
+import { highlightText } from '../../utils/selection'
+import { actions } from '../../data/reducers'
 
 const StyledTextArea = styled.div`
     display: flex;
@@ -13,10 +15,14 @@ const StyledTextArea = styled.div`
     }
 `
 export const TextAreaContainer = () => {
-    const { textItems } = useSelector((state: InitialState) => state)
+    const { textItems, highlightColor } = useSelector((state: InitialState) => state)
+    const dispatch = useDispatch()
+    const onSelection = (range: SelectionRange) => {
+        dispatch(actions.updateTextItems(highlightText({ textItems, range, color: highlightColor })))
+    }
     return (
         <StyledTextArea>
-            <TextArea textItems={textItems} />
+            <TextArea textItems={textItems} onSelection={onSelection} />
         </StyledTextArea>
     )
 }

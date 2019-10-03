@@ -4,9 +4,12 @@ import { Provider } from 'react-redux'
 import { mount } from 'enzyme'
 import { InitialState } from '../../ts/interfaces'
 import { TextAreaContainer } from './text-area-container'
+import { Color } from '../../ts/enums'
+
 describe('TextAreaContainer', () => {
     const initialState: InitialState = {
-        textItems: [{ color: 'red', text: 'Red' }]
+        highlightColor: Color.EMPTY,
+        textItems: [{ color: Color.RED, text: 'Red' }]
     }
     const mockStore = configureStore()
     let store, wrapper
