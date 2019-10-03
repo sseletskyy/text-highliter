@@ -1,11 +1,11 @@
 import React from 'react'
-import { ColorPalette } from './color-palette'
 import { TextAreaContainer } from './text-area-container'
+import HighlightPaletteContainer from './highlight-palette-container'
 
 export const Highlighter = () => {
     return (
         <section className="highlight-section">
-            <ColorPalette />
+            <HighlightPaletteContainer />
             <TextAreaContainer />
         </section>
     )
