@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { cx } from 'emotion'
+import { backgroundColors } from '../common-styles'
 interface ColorPickerProps {
     color: string
     onClick: () => void
@@ -20,18 +21,7 @@ const StyledColorPicker = styled.div`
     .selected {
         box-shadow: rgb(128, 128, 128) 4px 4px 4px 0px;
     }
-
-    .red {
-        background-color: red;
-    }
-
-    .yellow {
-        background-color: yellow;
-    }
-
-    .green {
-        background-color: lightgreen;
-    }
+    ${backgroundColors}
 `
 export const ColorPicker = (props: ColorPickerProps) => {
     const { color, onClick, selected = false } = props

@@ -1,5 +1,7 @@
 // @ts-ignore
 const getHighlightSection = () => cy.get('.highlight-section')
+// @ts-ignore
+const getHighlightTextArea = () => cy.get('.highlight-section .highlight-text-area')
 
 describe('App', () => {
     beforeEach(() => {
@@ -48,6 +50,18 @@ describe('App', () => {
                 .eq(1)
                 .should('have.css', 'box-shadow')
                 .and('eq', 'none')
+        })
+        describe('Highlight Text Area', () => {
+            it('should be', () => {
+                getHighlightTextArea().should('exist')
+            })
+            it('should have a yellow span', () => {
+                getHighlightTextArea()
+                    .find('span.yellow')
+                    .contains('yellow')
+                    .should('have.css', 'background-color')
+                    .and('eq', 'rgb(255, 255, 0)')
+            })
         })
     })
 })
