@@ -24,16 +24,17 @@ export const TextArea = (props: TextAreaProps) => {
 
     const handleSelection = () => {
         const selection = window.getSelection()
-        if (selection.anchorNode === selection.focusNode) {
-            const range: SelectionRange = {
-                textContent: selection.anchorNode.textContent,
-                anchorOffset: selection.anchorOffset,
-                focusOffset: selection.focusOffset
-            }
-            onSelection(range)
-        } else {
-            console.warn('selected different nodes')
+        const anchorNode = selection.anchorNode.parentElement
+        const focusNode = selection.focusNode.parentElement
+        const allNodes = Array.from(anchorNode.parentElement.children)
+        const range: SelectionRange = {
+            anchorIndex: allNodes.findIndex(el => el === anchorNode),
+            anchorOffset: selection.anchorOffset,
+            focusIndex: allNodes.findIndex(el => el === focusNode),
+            focusOffset: selection.focusOffset
         }
+        selection.removeAllRanges()
+        onSelection(range)
     }
 
     return (

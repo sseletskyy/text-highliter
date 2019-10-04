@@ -71,34 +71,14 @@
     "webpack-cli": "^3.3.9"
   },
   "jest": {
-    "testEnvironment": "jsdom",
-    "testURL": "https://localhost:3000/",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js"
-    ],
     "transform": {
       "^.+\\.tsx?$": "ts-jest"
-    },
-    "testMatch": [
-      "**/*.test.(ts|tsx)"
-    ],
-    "globals": {
-      "ts-jest": {
-        "babelConfig": false,
-        "diagnostics": false,
-        "tsConfig": "jest.tsconfig.json"
-      }
     },
     "coveragePathIgnorePatterns": [
       "/node_modules/",
       "enzyme.js",
       "cypress/",
       "dist"
-    ],
-    "setupFilesAfterEnv": [
-      "<rootDir>/enzyme.js"
     ],
     "coverageReporters": [
       "json",

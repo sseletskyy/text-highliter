@@ -13,7 +13,8 @@ export interface InitialState {
 }
 
 export interface SelectionRange {
-    textContent: string
+    anchorIndex: number
     anchorOffset: number
+    focusIndex: number
     focusOffset: number
 }

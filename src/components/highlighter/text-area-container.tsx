@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import { useSelector, useDispatch } from 'react-redux'
 import { InitialState, SelectionRange } from '../../ts/interfaces'
 import { TextArea } from './text-area'
-import { highlightText } from '../../utils/selection'
+import { highlightTextItems } from '../../utils/selection'
 import { actions } from '../../data/reducers'
 import { HighlightTextAreaMode as Mode } from '../../ts/enums'
 import { TextareaForm } from './textarea-form'
@@ -29,7 +29,7 @@ export const TextAreaContainer = () => {
     const { textItems, highlightColor } = useSelector((state: InitialState) => state)
     const dispatch = useDispatch()
     const onSelection = (range: SelectionRange) => {
-        dispatch(actions.updateTextItems(highlightText({ textItems, range, color: highlightColor })))
+        dispatch(actions.updateTextItems(highlightTextItems({ textItems, range, color: highlightColor })))
     }
     const [mode, setMode] = useState<Mode>(Mode.READ)
 

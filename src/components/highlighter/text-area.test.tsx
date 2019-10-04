@@ -5,16 +5,32 @@ import { TextArea } from './text-area'
 import { TextItem } from '../../ts/interfaces'
 import { Color } from '../../ts/enums'
 
+const generateNodes = () => {
+    const parentDiv = document.createElement('div')
+    const parent = document.createElement('p')
+    const textNodeA = document.createTextNode('ABCDE')
+    const textNodeB = document.createTextNode('second')
+    const nodeA = document.createElement('span')
+    const nodeB = document.createElement('span')
+    nodeA.appendChild(textNodeA)
+    nodeB.appendChild(textNodeB)
+    parent.appendChild(nodeA)
+    parent.appendChild(nodeB)
+    parentDiv.appendChild(parent)
+    return {
+        textNodeA,
+        textNodeB
+    }
+}
+
 const generateGetSelectionOfSameNode = () => {
     // @ts-ignore
     window.getSelection = () => {
-        const node = {
-            textContent: 'ABCDE'
-        }
+        const { textNodeA } = generateNodes()
         return {
             removeAllRanges: () => {},
-            anchorNode: node,
-            focusNode: node,
+            anchorNode: textNodeA,
+            focusNode: textNodeA,
             anchorOffset: 1,
             focusOffset: 4
         }
@@ -23,18 +39,13 @@ const generateGetSelectionOfSameNode = () => {
 const generateGetSelectionOfDiffNodes = () => {
     // @ts-ignore
     window.getSelection = () => {
-        const nodeA = {
-            textContent: ''
-        }
-        const nodeB = {
-            textContent: ''
-        }
+        const { textNodeA, textNodeB } = generateNodes()
         return {
             removeAllRanges: () => {},
-            anchorNode: nodeA,
-            focusNode: nodeB,
-            anchorOffset: 1,
-            focusOffset: 4
+            anchorNode: textNodeA,
+            focusNode: textNodeB,
+            anchorOffset: 4,
+            focusOffset: 1
         }
     }
 }
@@ -68,13 +79,13 @@ describe('TextArea', () => {
         textAreaComponent.simulate('mouseup')
         expect(mockEvent.mock.calls.length).toEqual(1)
     })
-    it('should NOT call onSelection prop when selection within different nodes', () => {
+    it('should call onSelection prop when selection within different nodes', () => {
         generateGetSelectionOfDiffNodes()
         const textItems: TextItem[] = [{ color: Color.EMPTY, text: ' ABC ' }, { color: Color.YELLOW, text: ' FGH' }]
         const wrapper = shallow(<TextArea textItems={textItems} onSelection={mockEvent} />)
         expect(mockEvent.mock.calls.length).toEqual(0)
         const textAreaComponent = wrapper.find('.highlight-text-area')
         textAreaComponent.simulate('mouseup')
-        expect(mockEvent.mock.calls.length).toEqual(0)
+        expect(mockEvent.mock.calls.length).toEqual(1)
     })
 })
