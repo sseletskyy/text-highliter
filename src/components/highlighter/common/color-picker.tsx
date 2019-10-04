@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { cx } from 'emotion'
-import { backgroundColors } from '../common-styles'
-import { Color } from '../../ts/enums'
+import { backgroundColors } from '../../common-styles'
+import { Color } from '../../../ts/enums'
 interface ColorPickerProps {
     color: Color
     onClick: () => void

@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import styled from '@emotion/styled'
 import { useSelector, useDispatch } from 'react-redux'
-import { InitialState, SelectionRange } from '../../ts/interfaces'
+import { InitialState, SelectionRange } from '../../../ts/interfaces'
 import { TextArea } from './text-area'
-import { highlightTextItems } from '../../utils/selection'
-import { actions } from '../../data/reducers'
-import { HighlightTextAreaMode as Mode } from '../../ts/enums'
+import { highlightTextItems } from '../../../utils/selection'
+import { actions } from '../../../data/reducers'
+import { HighlightTextAreaMode as Mode } from '../../../ts/enums'
 import { TextareaForm } from './textarea-form'
-import { textItemsToString } from '../../utils/helpers'
+import { textItemsToString } from '../../../utils/helpers'
 
 const StyledTextArea = styled.div`
     display: flex;

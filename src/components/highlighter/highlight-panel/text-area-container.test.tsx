@@ -2,9 +2,9 @@ import React from 'react'
 import configureStore from 'redux-mock-store'
 import { Provider } from 'react-redux'
 import { mount } from 'enzyme'
-import { InitialState } from '../../ts/interfaces'
+import { InitialState } from '../../../ts/interfaces'
 import { TextAreaContainer } from './text-area-container'
-import { Color, FilterPanelSortBy } from '../../ts/enums'
+import { Color, FilterPanelSortBy } from '../../../ts/enums'
 
 describe('TextAreaContainer', () => {
     const initialState: InitialState = {

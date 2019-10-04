@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { ColorPalette } from '../color-palette'
+import { ColorPalette } from '../common/color-palette'
 import { actions } from '../../../data/reducers'
 import { Color } from '../../../ts/enums'
 import { InitialState } from '../../../ts/interfaces'

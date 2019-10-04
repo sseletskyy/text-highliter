@@ -1,9 +1,9 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { ColorPalette } from './color-palette'
-import { Color } from '../../ts/enums'
-import { InitialState } from '../../ts/interfaces'
-import { actions } from '../../data/reducers'
+import { ColorPalette } from '../common/color-palette'
+import { Color } from '../../../ts/enums'
+import { InitialState } from '../../../ts/interfaces'
+import { actions } from '../../../data/reducers'
 
 const HighlightPaletteContainer = () => {
     const dispatch = useDispatch()

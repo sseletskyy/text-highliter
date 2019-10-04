@@ -48,7 +48,7 @@ export const updateHighlightColor = (state: InitialState, action: PayloadAction<
     state.highlightColor = state.highlightColor === action.payload ? Color.EMPTY : action.payload
 }
 
-const updateFilterColor = (state: InitialState, action: PayloadAction<Color>) => {
+export const updateFilterColor = (state: InitialState, action: PayloadAction<Color>) => {
     state.filterColors.has(action.payload)
         ? state.filterColors.delete(action.payload)
         : state.filterColors.add(action.payload)

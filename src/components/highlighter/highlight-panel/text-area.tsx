@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { SelectionRange, TextItem } from '../../ts/interfaces'
-import { backgroundColors, textArea } from '../common-styles'
+import { SelectionRange, TextItem } from '../../../ts/interfaces'
+import { backgroundColors, textArea } from '../../common-styles'
 
 interface TextAreaProps {
     textItems: TextItem[]

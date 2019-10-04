@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { ColorPicker } from './color-picker'
-import { Color } from '../../ts/enums'
+import { Color } from '../../../ts/enums'
 
 export interface ColorPaletteProps {
     selectedColors: Color[] | string[]

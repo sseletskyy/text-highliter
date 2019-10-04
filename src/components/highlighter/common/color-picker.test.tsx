@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import { ColorPicker } from './color-picker'
-import { Color } from '../../ts/enums'
+import { Color } from '../../../ts/enums'
 
 describe(' ColorPicker', () => {
     it('should render as red', () => {

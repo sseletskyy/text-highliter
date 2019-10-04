@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { TextAreaContainer } from './text-area-container'
-import HighlightPaletteContainer from './highlight-palette-container'
+import { TextAreaContainer } from './highlight-panel/text-area-container'
+import HighlightPaletteContainer from './highlight-panel/highlight-palette-container'
 import { FilterPanel } from './filter-panel/filter-panel'
 
 const StyledApp = styled.div`

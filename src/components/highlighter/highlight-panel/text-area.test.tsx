@@ -2,8 +2,8 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import { TextArea } from './text-area'
-import { TextItem } from '../../ts/interfaces'
-import { Color } from '../../ts/enums'
+import { TextItem } from '../../../ts/interfaces'
+import { Color } from '../../../ts/enums'
 
 const generateNodes = () => {
     const parentDiv = document.createElement('div')

@@ -12,6 +12,10 @@ export interface HighlightTextParams {
     range: SelectionRange
     color?: Color
 }
+
+/**
+ * highlight text in a single textItem, split it into several in case of partial selection range
+ */
 export const highlightTextItem = ({ textItem, range, color = Color.RED }: HighlightTextItemParams): TextItem[] => {
     const { color: originalColor, text: textContent } = textItem
     const [left, right] = [
@@ -28,6 +32,10 @@ export const highlightTextItem = ({ textItem, range, color = Color.RED }: Highli
     ].filter((item: TextItem) => item.text.length > 0)
 }
 
+/**
+ * Callback from Array.reducer
+ * it combines TextItems with the same color
+ */
 const combineReducer = (acc: TextItem[], next: TextItem) => {
     const last = acc.pop()
     if (!last) {
@@ -60,6 +68,10 @@ const prepareRange = (aRange: SelectionRange): SelectionRange => {
     return range
 }
 
+/**
+ * is used in highlightTextItems
+ * simple case when selection range contains only one node
+ */
 const updateTextItemsInSingleNode = ({ textItems, range, color }: HighlightTextParams): TextItem[] => {
     const updatedTextItems = highlightTextItem({
         textItem: textItems[range.anchorIndex],
@@ -69,6 +81,11 @@ const updateTextItemsInSingleNode = ({ textItems, range, color }: HighlightTextP
     textItems.splice(range.anchorIndex, 1, ...updatedTextItems)
     return textItems
 }
+
+/**
+ * is used in highlightTextItems
+ * complicated case when selection range contains more than one node
+ */
 const updateTextItemsInMultiNodes = ({ textItems, range, color }: HighlightTextParams): TextItem[] => {
     const focusTextItem = textItems[range.focusIndex]
     // skip replacing the focus node if it has the same color
@@ -125,7 +142,9 @@ const updateTextItemsInMultiNodes = ({ textItems, range, color }: HighlightTextP
     }
     return textItems
 }
-
+/**
+ * main method for updating text items based on selection range and color
+ */
 export const highlightTextItems = ({
     textItems,
     range: aRange,
